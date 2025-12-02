@@ -9,7 +9,7 @@ export default function ProductDisplay({
 }: ProductDisplayProps) {
   return (
     <>
-      <img src={product.imageUrl} alt={product.imageAlt} />
+      <img src={product.imageUrl} alt={product.imageAlt} style={{height: '150px', width: '150px', borderRadius: '50%'}}/>
       <br />
       <h2>{product.name}</h2>
       <br />
