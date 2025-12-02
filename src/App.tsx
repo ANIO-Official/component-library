@@ -2,8 +2,9 @@
 import './App.css'
 import AlertBox from './components/AlertBox/AlertBox'
 import ProductDisplay from './components/ProductDisplay/ProductDisplay'
-import type { Product } from './types'
-import Headphones from './assets/headphones-kyra-starr-pixabay.jpg'
+import type { Product, User } from './types'
+import Headphones from './assets/products/headphones-kyra-starr-pixabay.jpg'
+import UserProfileCard from './components/UserProfileCard/UserProfileCard'
 
 //Fake Products
 const product1:Product = {
@@ -20,11 +21,31 @@ const product1:Product = {
   inStock: true
 }
 
+const user1:User = {
+  id: 'user9945623',
+  name: 'Calli Fornia',
+  email: 'calli.fornia@hotmail.com',
+  role: 'Admin'
+}
+
 
 function App() {
 
   return (
     <>
+    <UserProfileCard
+    user={user1}
+    showEmail = {true}
+    showRole = {false}
+    onEdit={(userId, userName)=>alert(`Editing ${userName} | ${userId}`)}
+    />
+
+      <ProductDisplay
+        product={product1}
+        showDescription = {true}
+        showStockStatus = {true}
+        onAddToCart={(productId, productName)=>alert(`Added ${productName} | ${productId} x 1`)}
+      />
       <AlertBox
       type='success'
       message="You've successfully added item to the cart!"
@@ -32,12 +53,6 @@ function App() {
         <p><i>You can't actually close this but let's be imaginative.</i></p>
       </AlertBox>
 
-      <ProductDisplay
-        product={product1}
-        showDescription = {true}
-        showStockStatus = {true}
-        onAddToCart={(productId)=>alert(`Added ${product1.name} | ${productId} x 1`)}
-      />
     </>
   )
 }
