@@ -5,17 +5,15 @@ export default function ProductDisplay({ product, showDescription, showStockStat
     return (
         <>
             <img src={product.imageUrl} alt={product.imageAlt} />
-            <br />
-            <h2>{product.name}</h2><br />
-            <span onClick={()=>!showDescription? showDescription:!showDescription}>Show Product Details</span>
             <br/>
-            <p className="product-description" hidden={showDescription}>{product.description}</p>
+            <h2>{product.name}</h2>
             <br/>
-            <button onClick={()=>!showStockStatus? showStockStatus:!showStockStatus}>Check if In Stock?</button>
+            <p className="product-description" hidden={!showDescription}>{product.description}</p>
             <br/>
-            <p hidden={showStockStatus}>{product.inStock? "In Stock!": "Out of stock"}</p>
+            <p hidden={!showStockStatus}>{product.inStock? "In Stock!": "Out of stock"}</p>
             <br/>
-            <button onClick={()=>onAddToCart}>Add to Cart</button>
+            <button onClick={()=>
+            onAddToCart !== undefined? onAddToCart(product.id) : false }>Add to Cart</button>
             <br/>
             {children}
         </>
