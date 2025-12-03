@@ -2,31 +2,15 @@
 import "./App.css";
 import AlertBox from "./components/AlertBox/AlertBox";
 import ProductDisplay from "./components/ProductDisplay/ProductDisplay";
-import type { Product, User } from "./types";
 import UserProfileCard from "./components/UserProfileCard/UserProfileCard";
 import ExplainationBox from "./components/ExplainationBox/ExplainationBox";
 
-//Images
-import Headphones from "./assets/products/headphones-kyra-starr-pixabay.jpg";
+//Example Images
 import ExampleUser from "./assets/examples/fake-user-data-for-testing.png";
 import UserProfileCardSetup from "./assets/examples/user-profile-card-requirements.png";
 
 //Fake Products
-const product1: Product = {
-  id: "94TUY65",
-  name: "Alienware Headgear 2057X9PRO",
-  price: 79.99,
-  description: `
-  NEW lastest edition headphones from Alienware with a brand new twist in style! 
-  LED lit, water cooling, jet stream system with a thick headband!
-  AND Clippable accessories for the headband: UFO, Alien Cats, and more!
-  WHAT'S YOUR COMBO?`,
-  imageUrl: Headphones,
-  imageAlt:
-    "A blue and pink hair girl with galaxy headphones and a starry background.",
-  inStock: true,
-};
-
+import * as Products from "./components/ProductDisplay/ProductDisplay.test"
 //Fake Users
 import * as Users from "./components/UserProfileCard/UserProfileCard.test";
 
@@ -39,7 +23,7 @@ function App() {
         </div>
         <br />
         <br />
-        <div className="col-md  bg-danger-subtle d-flex flex-row justify-content-center align-items-center">
+        <div className="col-md  bg-danger-subtle d-flex flex-row justify-content-center align-items-center rounded-start">
           <UserProfileCard
             user={Users.user1}
             showEmail={true}
@@ -62,9 +46,9 @@ function App() {
           </AlertBox>
         </div>
 
-        <div className="col-md bg-primary-subtle">
+        <div className="col-md bg-primary-subtle rounded-end">
           <ProductDisplay
-            product={product1}
+            product={Products.product1}
             showDescription={true}
             showStockStatus={true}
             onAddToCart={(productId, productName) =>
@@ -73,16 +57,21 @@ function App() {
           />
         </div>
       </div>
-      <p>--------------------------------------------------------------</p>
+      <p className="separator">
+        --------------------------------------------------------------
+      </p>
       <div>
         <div>
           <h2>Component Compositions</h2>
         </div>
-        <section className="bg-primary-subtle border border-primary border-2 rounded-3 px-5 py-3 mt-5 d-flex flex-row align-items-center">
-          <h3>Update Profile</h3>
-          <p>
-            <i>Combining the UserProfileCard & AlertBox Components</i>
-          </p>
+        <section className="bg-primary-subtle border border-primary border-2 rounded-3 px-5 py-3 my-5 d-flex flex-row align-items-center">
+          <div className="d-flex flex-column border-end border-black me-5 pe-3">
+            <h3>Update Profile</h3>
+            <p>
+              <i>Combining the UserProfileCard & AlertBox Components</i>
+            </p>
+          </div>
+
           <br />
           <div>
             <UserProfileCard
@@ -93,7 +82,7 @@ function App() {
                 alert(`Editing ${userName} | ${userId}`)
               }
             >
-              <div className="bg-warning-subtle border border-warning border-2 mt-3 p-3">
+              <div className="bg-danger-subtle border border-danger border-2 mt-3 p-3">
                 <AlertBox
                   type="warning"
                   message="Are you sure you want to edit the details of this profile? Once updated
@@ -111,12 +100,55 @@ function App() {
             </UserProfileCard>
           </div>
         </section>
-        <div>
-          <h3>Purchase Again From User's Purchase History</h3>
-          <p>
-            <i>Combine the UserProfileCard & ProductDisplay Components</i>
-          </p>
-        </div>
+        <section className="bg-success-subtle border border-success border-2 rounded-3 px-5 py-3 my-5 d-flex flex-row align-items-center">
+          <div className="d-flex flex-column border-end border-black me-5 pe-3">
+            <h3>Purchase Again From User's Purchase History</h3>
+            <p>
+              <i>Combine the UserProfileCard & ProductDisplay Components</i>
+            </p>
+          </div>
+          <br />
+          <div id="user-buy-again-page" className="row row-cols-md-2">
+            <div className="col-md">
+              <h2 className="my-3">
+                <b>Welcome back, Hank!</b>
+              </h2>
+              <UserProfileCard
+                user={Users.user3}
+                showEmail={false}
+                showRole={true}
+                onEdit={(userId, userName) =>
+                  alert(`Editing ${userName} | ${userId}`)
+                }
+              />
+            </div>
+            <div>
+              <h3>Purchase History</h3>
+              <p>
+                <i>
+                  Looking to reignite your shopping spree? Check out some past
+                  purchases of yours!
+                </i>
+              </p>
+              <ProductDisplay
+                product={Products.product2}
+                showDescription={false}
+                showStockStatus={false}
+                onAddToCart={(productId, productName) =>
+                  alert(`Added ${productName} | ${productId} x 1`)
+                }
+              />
+              <ProductDisplay
+                product={Products.product3}
+                showDescription={false}
+                showStockStatus={false}
+                onAddToCart={(productId, productName) =>
+                  alert(`Added ${productName} | ${productId} x 1`)
+                }
+              />
+            </div>
+          </div>
+        </section>
       </div>
       <p>--------------------------------------------------------------</p>
       <div>
