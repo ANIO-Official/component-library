@@ -10,9 +10,7 @@ export default function ProductDisplay({
   return (
     <>
       <img className="mt-3" src={product.imageUrl} alt={product.imageAlt} style={{height: '150px', width: '150px', borderRadius: '50%'}}/>
-      <br />
-      <h2>{product.name}</h2>
-      <br />
+      <p className="fs-4 mt-4">{product.name}</p>
       <p className="product-description" hidden={!showDescription}>
         {product.description}
       </p>

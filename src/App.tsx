@@ -1,16 +1,15 @@
-//import { useState } from 'react'
 import "./App.css";
 import AlertBox from "./components/AlertBox/AlertBox";
 import ProductDisplay from "./components/ProductDisplay/ProductDisplay";
 import UserProfileCard from "./components/UserProfileCard/UserProfileCard";
 import ExplainationBox from "./components/ExplainationBox/ExplainationBox";
 
-//Example Images
+//Example Images for Explaination
 import ExampleUser from "./assets/examples/fake-user-data-for-testing.png";
 import UserProfileCardSetup from "./assets/examples/user-profile-card-requirements.png";
 
 //Fake Products
-import * as Products from "./components/ProductDisplay/ProductDisplay.test"
+import * as Products from "./components/ProductDisplay/ProductDisplay.test";
 //Fake Users
 import * as Users from "./components/UserProfileCard/UserProfileCard.test";
 
@@ -108,44 +107,100 @@ function App() {
             </p>
           </div>
           <br />
-          <div id="user-buy-again-page" className="row row-cols-md-2">
-            <div className="col-md">
-              <h2 className="my-3">
-                <b>Welcome back, Hank!</b>
-              </h2>
-              <UserProfileCard
-                user={Users.user3}
-                showEmail={false}
-                showRole={true}
-                onEdit={(userId, userName) =>
-                  alert(`Editing ${userName} | ${userId}`)
-                }
-              />
+          <div id="user-buy-again-page" className="bg-white row">
+            <div
+              id="example-header"
+              className="row d-flex flex-row justify-content-between align-items-center"
+            >
+              <h2 className="col fs-4">Best Bargain Tech Co.</h2>
+              <nav className="col">
+                <ul className="d-flex flex-row justify-content-evenly">
+                  <li>
+                    <a href="#" className="">
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="">
+                      Dealer Room
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="">
+                      Coupon Corner
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="">
+                      Sign Out
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
-            <div>
-              <h3>Purchase History</h3>
-              <p>
-                <i>
-                  Looking to reignite your shopping spree? Check out some past
-                  purchases of yours!
-                </i>
-              </p>
-              <ProductDisplay
-                product={Products.product2}
-                showDescription={false}
-                showStockStatus={false}
-                onAddToCart={(productId, productName) =>
-                  alert(`Added ${productName} | ${productId} x 1`)
-                }
-              />
-              <ProductDisplay
-                product={Products.product3}
-                showDescription={false}
-                showStockStatus={false}
-                onAddToCart={(productId, productName) =>
-                  alert(`Added ${productName} | ${productId} x 1`)
-                }
-              />
+            <div className="row row-cols-md-2">
+              <section
+                id="user-profile-overview"
+                className="col-md d-flex flex-column align-items-center border-end border-black pe-4"
+              >
+                <h2 className="my-3">
+                  <b>Welcome back, Hank!</b>
+                </h2>
+                <UserProfileCard
+                  user={Users.user3}
+                  showEmail={false}
+                  showRole={true}
+                  onEdit={(userId, userName) =>
+                    alert(`Editing ${userName} | ${userId}`)
+                  }
+                >
+                  <br />
+                  <p>
+                    <b>Total Spent(Yearly)</b>
+                    <br />
+                    $9,820.45
+                    <br />
+                    <b>Bio</b>
+                    <br />
+                    Big Spender because I like tech. Lorem Ipsum is simply dummy
+                    text of the printing and typesetting industry. Lorem Ipsum
+                    has been the industry's standard dummy text ever since the
+                    1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book. It has survived
+                    not only five centuries, but also the leap into electronic
+                    typesetting, remaining essentially unchanged. It was
+                    popularised in the 1960s with the release of Letraset sheets
+                    containing Lorem Ipsum passages, and more recently with
+                    desktop publishing software like Aldus PageMaker including
+                    versions of Lorem Ipsum.
+                  </p>
+                </UserProfileCard>
+              </section>
+              <section id="purchase-history">
+                <h3>Purchase History</h3>
+                <p>
+                  <i>
+                    Looking to reignite your shopping spree? Check out some past
+                    purchases of yours!
+                  </i>
+                </p>
+                <ProductDisplay
+                  product={Products.product2}
+                  showDescription={false}
+                  showStockStatus={false}
+                  onAddToCart={(productId, productName) =>
+                    alert(`Added ${productName} | ${productId} x 1`)
+                  }
+                />
+                <ProductDisplay
+                  product={Products.product3}
+                  showDescription={false}
+                  showStockStatus={false}
+                  onAddToCart={(productId, productName) =>
+                    alert(`Added ${productName} | ${productId} x 1`)
+                  }
+                />
+              </section>
             </div>
           </div>
         </section>
