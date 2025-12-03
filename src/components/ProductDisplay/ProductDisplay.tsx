@@ -9,19 +9,17 @@ export default function ProductDisplay({
 }: ProductDisplayProps) {
   return (
     <>
-      <img src={product.imageUrl} alt={product.imageAlt} style={{height: '150px', width: '150px', borderRadius: '50%'}}/>
+      <img className="mt-3" src={product.imageUrl} alt={product.imageAlt} style={{height: '150px', width: '150px', borderRadius: '50%'}}/>
       <br />
       <h2>{product.name}</h2>
       <br />
       <p className="product-description" hidden={!showDescription}>
         {product.description}
       </p>
-      <br />
       <p hidden={!showStockStatus}>
         {product.inStock ? "In Stock!" : "Out of stock"}
       </p>
-      <br />
-      <button
+      <button className="mb-3"
         onClick={() =>
           onAddToCart !== undefined ? onAddToCart(product.id, product.name) : false
         }

@@ -3,8 +3,13 @@ import "./App.css";
 import AlertBox from "./components/AlertBox/AlertBox";
 import ProductDisplay from "./components/ProductDisplay/ProductDisplay";
 import type { Product, User } from "./types";
-import Headphones from "./assets/products/headphones-kyra-starr-pixabay.jpg";
 import UserProfileCard from "./components/UserProfileCard/UserProfileCard";
+import ExplainationBox from "./components/ExplainationBox/ExplainationBox";
+
+//Images
+import Headphones from "./assets/products/headphones-kyra-starr-pixabay.jpg";
+import ExampleUser from "./assets/examples/fake-user-data-for-testing.png";
+import UserProfileCardSetup from "./assets/examples/user-profile-card-requirements.png";
 
 //Fake Products
 const product1: Product = {
@@ -22,45 +27,42 @@ const product1: Product = {
   inStock: true,
 };
 
-const user1: User = {
-  id: "user9945623",
-  name: "Calli Fornia",
-  email: "calli.fornia@hotmail.com",
-  role: "Admin",
-};
+//Fake Users
+import * as Users from "./components/UserProfileCard/UserProfileCard.test";
 
 function App() {
   return (
     <>
       <div className="row row-cols-2">
         <div className="col-md-12">
-          <h2>Initial Testing</h2>
+          <h2>Initial Component Testing</h2>
         </div>
         <br />
         <br />
-        <div className="col-md-6">
+        <div className="col-md  bg-danger-subtle d-flex flex-row justify-content-center align-items-center">
           <UserProfileCard
-            user={user1}
+            user={Users.user1}
             showEmail={true}
             showRole={false}
             onEdit={(userId, userName) =>
               alert(`Editing ${userName} | ${userId}`)
             }
           />
-          <br/>
-          <div className="col-md">
-            <AlertBox
-              type="success"
-              message="You've successfully added item to the cart!"
-              onClose={() => alert('"Closed" the alert. :)')}
-            >
-              <p>
-                <i>You can't actually close this but let's be imaginative.</i>
-              </p>
-            </AlertBox>
-          </div>
         </div>
-        <div className="col-md-6">
+        <br />
+        <div className="col-md bg-warning-subtle d-flex flex-row justify-content-center align-items-center">
+          <AlertBox
+            type="success"
+            message="You've successfully added item to the cart!"
+            onClose={() => alert('"Closed" the alert. :)')}
+          >
+            <p>
+              <i>You can't actually close this but let's be imaginative.</i>
+            </p>
+          </AlertBox>
+        </div>
+
+        <div className="col-md bg-primary-subtle">
           <ProductDisplay
             product={product1}
             showDescription={true}
@@ -69,6 +71,95 @@ function App() {
               alert(`Added ${productName} | ${productId} x 1`)
             }
           />
+        </div>
+      </div>
+      <p>--------------------------------------------------------------</p>
+      <div>
+        <div>
+          <h2>Component Compositions</h2>
+        </div>
+        <section className="bg-primary-subtle border border-primary border-2 rounded-3 px-5 py-3 mt-5 d-flex flex-row align-items-center">
+          <h3>Update Profile</h3>
+          <p>
+            <i>Combining the UserProfileCard & AlertBox Components</i>
+          </p>
+          <br />
+          <div>
+            <UserProfileCard
+              user={Users.user2}
+              showEmail={true}
+              showRole={true}
+              onEdit={(userId, userName) =>
+                alert(`Editing ${userName} | ${userId}`)
+              }
+            >
+              <div className="bg-warning-subtle border border-warning border-2 mt-3 p-3">
+                <AlertBox
+                  type="warning"
+                  message="Are you sure you want to edit the details of this profile? Once updated
+            previous version are no longer available."
+                >
+                  <p>
+                    <i>
+                      Once you commit to change the details, please note that we
+                      again do not save a copy of said profile details. Be sure
+                      to back them up.
+                    </i>
+                  </p>
+                </AlertBox>
+              </div>
+            </UserProfileCard>
+          </div>
+        </section>
+        <div>
+          <h3>Purchase Again From User's Purchase History</h3>
+          <p>
+            <i>Combine the UserProfileCard & ProductDisplay Components</i>
+          </p>
+        </div>
+      </div>
+      <p>--------------------------------------------------------------</p>
+      <div>
+        <div>
+          <h2>Component Usage</h2>
+          <p>
+            <i>How to use these components efficiently?</i>
+          </p>
+          <br />
+          <div>
+            <ExplainationBox
+              title="UserProfileCard"
+              message={`In order to use the User Profile Card Component, you will
+              need to create a User type object first to simulate user data. Why?
+              The User Profile Card Component accepts the deconstructed props of type 
+              UserProfileCardProps. One of which is the user property that is an object 
+              of type User with its own properties.
+              The component then accesses different properties of the user property to 
+              display specific information such as avatars, names, email address and role.
+
+              In order to show the data on screen, we need to create a user to recieve data from.
+              After doing so, you will need to go to the App.tsx file, import the UserProfileCard 
+              component (I've already done so for you), and create the component within the fragment 
+              (<> </>).`}
+              imageUrl={ExampleUser}
+            >
+              <p>
+                <i>
+                  This is an example of a User typed object that can be used by
+                  the Explaination Box Component.
+                </i>
+              </p>
+              <img src={UserProfileCardSetup} />
+              <p>
+                <i>
+                  For clarity, here are the requirements/setup for the
+                  interfaces used by this component.
+                </i>
+              </p>
+            </ExplainationBox>
+            <p>One Here for ProductDisplay</p>
+            <p>One Here for AlertBox</p>
+          </div>
         </div>
       </div>
     </>

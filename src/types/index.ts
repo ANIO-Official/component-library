@@ -43,3 +43,11 @@ export interface ProductDisplayProps {
   onAddToCart?: (productId: string, productName:string) => void;
   children?: React.ReactNode;
 }
+
+//EXPLAINATION
+export interface ExplainationBoxProps{
+    title: string
+    message:string
+    children?: React.ReactNode
+    imageUrl?: string
+}

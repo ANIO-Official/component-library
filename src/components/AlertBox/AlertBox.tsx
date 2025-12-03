@@ -9,9 +9,9 @@ export default function AlertBox({
   return (
     <>
       <div className={`${type}-alert`}>
-        <h2>{message}</h2>
-        <br />
-        <button onClick={onClose}>Close</button>
+        <span className="Message mb-3"><b>{message}</b></span>
+        <br/>
+        <button className="close-button" onClick={onClose} hidden={onClose===undefined}>Close X</button>
         <br/>
         {children}        
       </div>

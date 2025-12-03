@@ -15,9 +15,9 @@ export default function UserProfileCard({
       <div className="user-overview">
         <h2>{user.name}</h2>
         <p>
-          <b>Email:</b> {showEmail ? user.email : "hidden ( ˘︹˘ )"}
+          <b>Email:</b> {showEmail ? user.email : "Unavailable. ( ˘︹˘ )"}
           <br />
-          <b>Role:</b> {showRole ? user.role : "hidden ( ˘︹˘ )"}
+          <b>Role:</b> {showRole ? user.role : "Unavailable. ( ˘︹˘ )"}
           <br />
           <br />
           <button
