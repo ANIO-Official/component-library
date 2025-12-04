@@ -11,6 +11,7 @@ import UserProfileCardSetup from "./assets/examples/user-profile-card-requiremen
 import ProductDisplaySetup from "./assets/examples/product-display-requirements.png";
 import AlertBoxSetup from "./assets/examples/alert-box-requirements.png";
 import ProductDisplayExample from "./assets/examples/product-display-example.png";
+import UserProfileCardExample from "./assets/examples/user-profile-card-example.png";
 
 //Fake Products
 import * as Products from "./components/ProductDisplay/ProductDisplay.test";
@@ -256,23 +257,65 @@ function App() {
                 </i>
               </p>
               <div className="component-example">
-                {/* <img src={}/> */}
-                <br />
-                <p>Example Component Usage</p>
-                <br />
-                <p>Component Props</p>
-                <ul>
-                  <li className="pb-2"><b>user:</b> </li>
-                  <li className="pb-2"><b>showEmail:</b> An optional boolean </li>
-                  <li className="pb-2"><b>showRole:</b> An optional boolean </li>
-                  <li className="pb-2"><b>onEdit:</b> An optional function </li>
-                  <li className="pb-2">
-                    <b>children:</b> An optional area to place additional JSX
+                <div className="d-flex flex-row justify-content-start">
+                  <img className="pe-5" src={UserProfileCardExample} />
+                  <div>
+                    <UserProfileCard
+                      user={Users.user3}
+                      onEdit={(userId, userName) =>
+                        alert(
+                          `Are you sure you want to edit ${userName} | ${userId}'s profile?`
+                        )
+                      }
+                    />
+                  </div>
+                </div>
+                <p>
+                  <i>Example Usage.</i>
+                </p>
+                <div className="text-start">
+                  <p className="fs-3 ps-4">
+                    <b>Component Props</b>
+                  </p>
+                  <ul>
+                    <li className="pb-2">
+                      <b>user:</b> An object of type User. Has the required
+                      properties of: id(string), name(string), email(string),
+                      and role(string). And optional property of
+                      avatarUrl(string).
+                      <br />
+                      <b className="text-danger"><i>Special Note about user object❗</i></b> The avatarUrl property will not
+                      show if it is undefined. This is because This component's
+                      JSX checks whether this value is undefined, then toggles
+                      the hidden attribute of the JSX image element. When not
+                      undefined, hidden is false (show it). When undefined,
+                      hidden is true (hide it).
+                    </li>
+                    <li className="pb-2">
+                      <b>showEmail:</b> An optional boolean that decides whether
+                      or not to show the user's email. When false or undefined,
+                      replaces email with 'Unavailable' message. When true,
+                      shows the user's email according to the user object's
+                      email (string) property value.
+                    </li>
+                    <li className="pb-2">
+                      <b>showRole:</b> An optional boolean that decides whether
+                      or not to show the user's role. When false or undefined,
+                      replaces role with 'Unavailable' message. When true, shows
+                      the user's role according to the user object's role
+                      (string) property value.{" "}
+                    </li>
+                    <li className="pb-2">
+                      <b>onEdit:</b> An optional function{" "}
+                    </li>
+                    <li className="pb-2">
+                      <b>children:</b> An optional area to place additional JSX
                       or components within the UserProfileCard component's
                       carats'
                       {"<UserProfileCard> Children go here </UserProfileCard>"}.
-                  </li>
-                </ul>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </ExplainationBox>
             <ExplainationBox
@@ -302,7 +345,7 @@ function App() {
               </p>
               <div className="component-example">
                 <div className="d-flex flex-row justify-content-start">
-                  <img className="pe-5" src={ProductDisplayExample}/>
+                  <img className="pe-5" src={ProductDisplayExample} />
                   <div>
                     <ProductDisplay
                       product={Products.product2}
@@ -314,7 +357,9 @@ function App() {
                     />
                   </div>
                 </div>
-                <p><i>Example Usage.</i></p>
+                <p>
+                  <i>Example Usage.</i>
+                </p>
                 <div className="text-start">
                   <p className="fs-3 ps-4">
                     <b>Component Props</b>
@@ -332,13 +377,13 @@ function App() {
                       decides whether or not to show the description of a
                       product. When left out (undefined) or set to false, it
                       will not show. When set to true, shows text set in the
-                      product object's description string value.
+                      product object's description (string) property value.
                     </li>
                     <li className="pb-2">
                       <b>showStockStatus: </b> An optional boolean prop that
                       decides whether or not to show the stock status of a
                       product. When left out (undefined) or set to false, it
-                      will not show. When set to true, shows appropriate text 
+                      will not show. When set to true, shows appropriate text
                       according to the product object's inStock boolean value.
                     </li>
                     <li className="pb-2">

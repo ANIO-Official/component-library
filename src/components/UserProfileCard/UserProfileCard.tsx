@@ -10,7 +10,7 @@ export default function UserProfileCard({
   return (
     <>
       <div className="user-pfp">
-        <img src={`${user.avatarUrl}`} alt={`${user.name}'s avatar / profile picture.`} hidden={user.avatarUrl !== undefined? false:true}/>
+        <img src={`${user.avatarUrl}`} alt={`${user.name}'s avatar / profile picture.`} style={{height: '50px', width: '50px'}}  hidden={user.avatarUrl !== undefined? false:true}/>
       </div>
       <div className="user-overview">
         <h2>{user.name}</h2>
