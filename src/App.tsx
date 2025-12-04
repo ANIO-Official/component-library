@@ -12,6 +12,7 @@ import ProductDisplaySetup from "./assets/examples/product-display-requirements.
 import AlertBoxSetup from "./assets/examples/alert-box-requirements.png";
 import ProductDisplayExample from "./assets/examples/product-display-example.png";
 import UserProfileCardExample from "./assets/examples/user-profile-card-example.png";
+import AlertBoxExample from "./assets/examples/alert-box-component-example.png";
 
 //Fake Products
 import * as Products from "./components/ProductDisplay/ProductDisplay.test";
@@ -284,12 +285,14 @@ function App() {
                       and role(string). And optional property of
                       avatarUrl(string).
                       <br />
-                      <b className="text-danger"><i>Special Note about user object❗</i></b> The avatarUrl property will not
-                      show if it is undefined. This is because This component's
-                      JSX checks whether this value is undefined, then toggles
-                      the hidden attribute of the JSX image element. When not
-                      undefined, hidden is false (show it). When undefined,
-                      hidden is true (hide it).
+                      <b className="text-primary">
+                        <i>Special Note about user object:</i>
+                      </b>{" "}
+                      The avatarUrl property will not show if it is undefined.
+                      This is because This component's JSX checks whether this
+                      value is undefined, then toggles the hidden attribute of
+                      the JSX image element. When not undefined, hidden is false
+                      (show it). When undefined, hidden is true (hide it).
                     </li>
                     <li className="pb-2">
                       <b>showEmail:</b> An optional boolean that decides whether
@@ -412,14 +415,53 @@ function App() {
                 </i>
               </p>
               <div className="component-example">
-                {/* <img src={}/> */}
-                <br />
-                <p>Example Component Usage</p>
-                <br />
-                <p>Component Props</p>
-                <ul>
-                  <li></li>
-                </ul>
+                <div className="d-flex flex-row justify-content-start">
+                  <img className="pe-5" src={AlertBoxExample} />
+                  <div className="bg-secondary-subtle p-5 rounded-5">
+                    <AlertBox
+                      type="error"
+                      message="Oops! Error loading page. Refresh and try again. [404]"
+                      onClose={() =>
+                        alert("Refreshing the page now! (I'm kidding)")
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="text-start">
+                  <p className="fs-3 ps-4">
+                    <b>Component Props</b>
+                  </p>
+                  <ul>
+                    <li className="pb-2">
+                      <b>type:</b> A string specific to the AlertType. All types
+                      possible are found in index.ts. But here's the options
+                      here as well: 'success', 'error', 'warning', and 'info'.
+                      <br />
+                      The great thing about these options, is that in the JSX,
+                      the{" "}
+                      <b className="text-primary">
+                        classname for their container is named after their type
+                      </b>
+                      . Example: An AlertBox with a type prop of 'success' will
+                      have its div container class named 'success-alert'. This
+                      makes styling by alert type much easier.
+                    </li>
+                    <li className="pb-2">
+                      <b>message:</b> A string that will show within the
+                      AlertBox component appears on screen to the user.
+                    </li>
+                    <li className="pb-2">
+                      <b>onClose:</b> An optional function that is invoked when
+                      a close button (made in the component's JSX) is pressed.
+                      These examples bring up the alert.
+                    </li>
+                    <li className="pb-2">
+                      <b>children:</b> An optional area to place additional JSX
+                      or components within the AlertBox component's carats'
+                      {"<AlertBox> Children go here </AlertBox>"}.
+                    </li>
+                  </ul>
+                </div>
               </div>
             </ExplainationBox>
           </div>

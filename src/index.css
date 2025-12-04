@@ -65,6 +65,20 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.error-alert{
+  padding: 50px;
+  border-radius: 10px;
+  border: 2px dashed rgb(18, 19, 22);
+  background-color: rgba(255, 189, 113, 0.5);
+  color: rgb(34, 28, 51);
+  font-style: italic;
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+.error-alert button{
+  border-radius: 5px;
+  background-color: rgba(145, 71, 10, 0.986);
+}
+
 li{
   list-style: none;
 }
