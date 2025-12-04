@@ -6,7 +6,11 @@ import ExplainationBox from "./components/ExplainationBox/ExplainationBox";
 
 //Example Images for Explaination
 import ExampleUser from "./assets/examples/fake-user-data-for-testing.png";
+import ExampleProduct from "./assets/examples/fake-product-data-for-testing.png";
 import UserProfileCardSetup from "./assets/examples/user-profile-card-requirements.png";
+import ProductDisplaySetup from "./assets/examples/product-display-requirements.png";
+import AlertBoxSetup from "./assets/examples/alert-box-requirements.png";
+import ProductDisplayExample from "./assets/examples/product-display-example.png";
 
 //Fake Products
 import * as Products from "./components/ProductDisplay/ProductDisplay.test";
@@ -16,10 +20,11 @@ import * as Users from "./components/UserProfileCard/UserProfileCard.test";
 function App() {
   return (
     <>
-      <div className="row row-cols-2">
+      <div id="initial-components" className="row row-cols-2">
         <div className="col-md-12">
-          <h2>Initial Component Testing</h2>
+          <h2 className="text-start">Initial Component Testing</h2>
         </div>
+        <br />
         <br />
         <br />
         <div className="col-md  bg-danger-subtle d-flex flex-row justify-content-center align-items-center rounded-start">
@@ -56,12 +61,16 @@ function App() {
           />
         </div>
       </div>
-      <p className="separator">
-        --------------------------------------------------------------
-      </p>
-      <div>
-        <div>
+      <br />
+      <div id="component-compositions">
+        <div className="text-start">
           <h2>Component Compositions</h2>
+          <p>
+            <i>
+              Combining Components to make different layouts for different
+              purposes.
+            </i>
+          </p>
         </div>
         <section className="bg-primary-subtle border border-primary border-2 rounded-3 px-5 py-3 my-5 d-flex flex-row align-items-center">
           <div className="d-flex flex-column border-end border-black me-5 pe-3">
@@ -144,7 +153,7 @@ function App() {
                 className="col-md d-flex flex-column align-items-center border-end border-black pe-4"
               >
                 <h2 className="my-3">
-                  <b>Welcome back, Hank!</b>
+                  <b>Welcome back!</b>
                 </h2>
                 <UserProfileCard
                   user={Users.user3}
@@ -205,13 +214,14 @@ function App() {
           </div>
         </section>
       </div>
-      <p>--------------------------------------------------------------</p>
-      <div>
+      <div id="component-usage">
         <div>
-          <h2>Component Usage</h2>
-          <p>
-            <i>How to use these components efficiently?</i>
-          </p>
+          <div className="text-start">
+            <h2>Component Usage</h2>
+            <p>
+              <i>How to use these components efficiently?</i>
+            </p>
+          </div>
           <br />
           <div>
             <ExplainationBox
@@ -223,7 +233,7 @@ function App() {
               of type User with its own properties.
               The component then accesses different properties of the user property to 
               display specific information such as avatars, names, email address and role.
-
+                
               In order to show the data on screen, we need to create a user to recieve data from.
               After doing so, you will need to go to the App.tsx file, import the UserProfileCard 
               component (I've already done so for you), and create the component within the fragment 
@@ -232,20 +242,141 @@ function App() {
             >
               <p>
                 <i>
-                  This is an example of a User typed object that can be used by
-                  the Explaination Box Component.
+                  An example of a User typed object that can be used by the
+                  UserProfileCard Component.
+                  <br />
+                  It takes the shape of the <b>User interface</b>.
                 </i>
               </p>
               <img src={UserProfileCardSetup} />
               <p>
                 <i>
-                  For clarity, here are the requirements/setup for the
-                  interfaces used by this component.
+                  The Requirements/Setup for the interface used by the
+                  UserProfileCard component.
                 </i>
               </p>
+              <div className="component-example">
+                {/* <img src={}/> */}
+                <br />
+                <p>Example Component Usage</p>
+                <br />
+                <p>Component Props</p>
+                <ul>
+                  <li className="pb-2"><b>user:</b> </li>
+                  <li className="pb-2"><b>showEmail:</b> An optional boolean </li>
+                  <li className="pb-2"><b>showRole:</b> An optional boolean </li>
+                  <li className="pb-2"><b>onEdit:</b> An optional function </li>
+                  <li className="pb-2">
+                    <b>children:</b> An optional area to place additional JSX
+                      or components within the UserProfileCard component's
+                      carats'
+                      {"<UserProfileCard> Children go here </UserProfileCard>"}.
+                  </li>
+                </ul>
+              </div>
             </ExplainationBox>
-            <p>One Here for ProductDisplay</p>
-            <p>One Here for AlertBox</p>
+            <ExplainationBox
+              title="ProductDisplay"
+              message={`Similar to the User Profile Card Component, you will
+              need to create a typed object first to simulate loading a product's data.
+              ProductDisplay's prop includes a product of type product. It then uses this
+              information to display specific product data.
+              `}
+              imageUrl={ExampleProduct}
+            >
+              <p>
+                <i>
+                  An example a Product typed object that can be used by the
+                  ProductDisplay Component.
+                  <br />
+                  It takes the shape of the <b>Product interface</b>.
+                </i>
+              </p>
+              <img src={ProductDisplaySetup} />
+              <p>
+                <i>
+                  The Requirements/Setup for the interface used by the
+                  ProductDisplay component.
+                </i>
+                <br />
+              </p>
+              <div className="component-example">
+                <div className="d-flex flex-row justify-content-start">
+                  <img className="pe-5" src={ProductDisplayExample}/>
+                  <div>
+                    <ProductDisplay
+                      product={Products.product2}
+                      showDescription={false}
+                      showStockStatus={true}
+                      onAddToCart={(productId, productName) =>
+                        alert(`Added ${productName} | ${productId} x 1`)
+                      }
+                    />
+                  </div>
+                </div>
+                <p><i>Example Usage.</i></p>
+                <div className="text-start">
+                  <p className="fs-3 ps-4">
+                    <b>Component Props</b>
+                  </p>
+                  <ul>
+                    <li className="pb-2">
+                      <b>product:</b> An object of type Product. Has the
+                      required properties of: id(string), name(string),
+                      price(number), description(string), and inStock(boolean).
+                      Has the optional properties of imageUrl(string) and
+                      imageAlt(string).
+                    </li>
+                    <li className="pb-2">
+                      <b>showDescription:</b> An optional boolean prop that
+                      decides whether or not to show the description of a
+                      product. When left out (undefined) or set to false, it
+                      will not show. When set to true, shows text set in the
+                      product object's description string value.
+                    </li>
+                    <li className="pb-2">
+                      <b>showStockStatus: </b> An optional boolean prop that
+                      decides whether or not to show the stock status of a
+                      product. When left out (undefined) or set to false, it
+                      will not show. When set to true, shows appropriate text 
+                      according to the product object's inStock boolean value.
+                    </li>
+                    <li className="pb-2">
+                      <b>onAddToCart: </b> An optional function that accepts the
+                      parameters of productId {"(string)"} and productName{" "}
+                      {"(string)"}. When a ProductDisplay component is made,
+                      this prop must be set to a function that takes these two
+                      parameters and does something with them.
+                    </li>
+                    <li className="pb-2">
+                      <b>children:</b> An optional area to place additional JSX
+                      or components within the ProductDisplay component's
+                      carats'
+                      {"<ProductDisplay> Children go here </ProductDisplay>"}.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </ExplainationBox>
+            <ExplainationBox title="AlertBox" message={``}>
+              <img src={AlertBoxSetup} />
+              <p>
+                <i>
+                  The Requirements/Setup for the interface used by the AlertBox
+                  component.
+                </i>
+              </p>
+              <div className="component-example">
+                {/* <img src={}/> */}
+                <br />
+                <p>Example Component Usage</p>
+                <br />
+                <p>Component Props</p>
+                <ul>
+                  <li></li>
+                </ul>
+              </div>
+            </ExplainationBox>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ export default function ProductDisplay({
         {product.description}
       </p>
       <p hidden={!showStockStatus}>
-        {product.inStock ? "In Stock!" : "Out of stock"}
+        {product.inStock ? <p className="text-success">In Stock!</p> : <p className="text-danger">Out of stock</p>}
       </p>
       <button className="mb-3"
         onClick={() =>

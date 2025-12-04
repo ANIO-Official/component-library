@@ -27,7 +27,7 @@ export const product2: Product = {
   imageUrl: Mic,
   imageAlt:
     "A silver microphone.",
-  inStock: true,
+  inStock: false,
 };
 
 export const product3: Product = {
@@ -40,5 +40,5 @@ export const product3: Product = {
   imageUrl: Laptop,
   imageAlt:
     "A white windows laptop sitting on a wooden table with office supplies and a phone scattered around it.",
-  inStock: false,
+  inStock: true,
 };
