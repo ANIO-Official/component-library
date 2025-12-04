@@ -406,7 +406,10 @@ function App() {
                 </div>
               </div>
             </ExplainationBox>
-            <ExplainationBox title="AlertBox" message={``}>
+            <ExplainationBox title="AlertBox" message={`The AlertBox component is very straightforward for the most part.
+              The only neccessary requirement to keep mind of is the type prop. AlertBox needs a type prop but it can only be
+              of type AlertType. AlertType only has 4 options, and they MUST be of those three options when creating an
+              Alert Component. More details below.`}>
               <img src={AlertBoxSetup} />
               <p>
                 <i>
